@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Promedio Ponderado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .nota-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Calculadora de Promedio Ponderado</h2>
+    
+    <div id="inputs">
+        <div class="nota-item">
+            <label for="nota">Nota:</label>
+            <input type="number" class="nota" placeholder="Ingrese la nota">
+            <label for="%">Porcentaje (%):</label>
+            <input type="number" class="porcentaje" placeholder="Ingrese el porcentaje">
+        </div>
+    </div>
+    <button onclick="agregarNota()">Agregar Nota</button>
+    <button onclick="calcularPromedio()">Calcular Promedio</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function agregarNota() {
+        var inputContainer = document.getElementById("inputs");
+        var notaItem = document.createElement("div");
+        notaItem.classList.add("nota-item");
+        
+        // Crear campos para nueva nota y porcentaje
+        var notaLabel = document.createElement("label");
+        notaLabel.textContent = "Nota:";
+        var notaInput = document.createElement("input");
+        notaInput.type = "number";
+        notaInput.classList.add("nota");
+        notaInput.placeholder = "Ingrese la nota";
+
+        var porcentajeLabel = document.createElement("label");
+        porcentajeLabel.textContent = "Porcentaje (%):";
+        var porcentajeInput = document.createElement("input");
+        porcentajeInput.type = "number";
+        porcentajeInput.classList.add("porcentaje");
+        porcentajeInput.placeholder = "Ingrese el porcentaje";
+
+        // Añadir los elementos creados a la página
+        notaItem.appendChild(notaLabel);
+        notaItem.appendChild(notaInput);
+        notaItem.appendChild(porcentajeLabel);
+        notaItem.appendChild(porcentajeInput);
+        inputContainer.appendChild(notaItem);
+    }
+
+    function calcularPromedio() {
+        // Obtener todas las notas y porcentajes
+        var notas = document.querySelectorAll(".nota");
+        var porcentajes = document.querySelectorAll(".porcentaje");
+
+        var totalNotas = [];
+        var totalPorcentajes = [];
+
+        // Convertir las notas y porcentajes en matrices de 1 dimensión
+        for (var i = 0; i < notas.length; i++) {
+            totalNotas.push(parseFloat(notas[i].value));
+            totalPorcentajes.push(parseFloat(porcentajes[i].value));  // Usar porcentaje directamente
+        }
+
+        // Validación de las entradas
+        if (totalNotas.some(isNaN) || totalPorcentajes.some(isNaN)) {
+            alert("Por favor ingrese todas las notas y porcentajes correctamente.");
+            return;
+        }
+
+        // Verificar que los porcentajes sumen 100%
+        var sumaPorcentajes = totalPorcentajes.reduce((acc, porcentaje) => acc + porcentaje, 0);
+        if (sumaPorcentajes !== 100) {
+            alert("Los porcentajes deben sumar 100%.");
+            return;
+        }
+
+        // Usar matrices para multiplicar notas por porcentajes
+        var sumaPonderada = totalNotas.reduce((acc, nota, index) => acc + (nota * (totalPorcentajes[index] / 100)), 0);
+
+        // Mostrar el resultado
+        document.getElementById("result").innerHTML = "El promedio ponderado es: " + sumaPonderada.toFixed(2);
+    }
+</script>
+
+</body>
+</html>
