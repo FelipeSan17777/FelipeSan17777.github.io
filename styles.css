@@ -69,3 +69,43 @@ footer {
   background-color: #4CAF50;
   color: white;
 }
+
+
+#informacion-promedios {
+  margin-top: 200px; 
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+#informacion-promedios h2, 
+#informacion-promedios h3, 
+#informacion-promedios h4 {
+  margin-top: 40px; 
+  margin-bottom: 15px; 
+}
+
+
+#informacion-promedios p {
+  margin-bottom: 30px; 
+  line-height: 1.8; 
+}
+
+
+#informacion-promedios ul, 
+#informacion-promedios ol {
+  margin-bottom: 40px; 
+  padding-left: 20px;
+}
+
+
+#informacion-promedios code {
+  background-color: #f4f4f4;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: monospace;
+}
