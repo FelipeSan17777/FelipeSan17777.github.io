@@ -45,6 +45,42 @@
         .nota-item {
             margin-bottom: 10px;
         }
+
+        /* Sección de información con mayor separación */
+        #informacion-promedios {
+            margin-top: 300px; /* Espacio más grande entre la calculadora y la información */
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #informacion-promedios h2, 
+        #informacion-promedios h3, 
+        #informacion-promedios h4 {
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+
+        #informacion-promedios p {
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        #informacion-promedios ul, 
+        #informacion-promedios ol {
+            margin-bottom: 40px;
+            padding-left: 20px;
+        }
+
+        #informacion-promedios code {
+            background-color: #f4f4f4;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
@@ -65,6 +101,90 @@
 
     <div id="result"></div>
 </div>
+<div class="tutorial">
+    <h2>Cómo usar la calculadora</h2>
+    <p>Para calcular el promedio ponderado, ingresa las notas y los porcentajes correspondientes a cada una de ellas. A continuación, te explicamos los pasos:</p>
+    <ol>
+        <li>En el campo "Nota", ingresa la calificación obtenida en el examen o actividad.</li>
+        <li>En el campo "Porcentaje", ingresa el porcentaje que representa la importancia de esa nota (por ejemplo, 30% o 0.30).</li>
+        <li>Haz clic en "Agregar Nota" si deseas añadir más notas.</li>
+        <li>Una vez que hayas agregado todas las notas y porcentajes, haz clic en "Calcular Promedio" para obtener el promedio ponderado.</li>
+    </ol>
+    <p><strong>Importante:</strong> Los porcentajes deben sumar 100% para que el cálculo sea correcto.</p>
+</div>
+</div>
+
+<section id="informacion-promedios">
+    <h2>¿Qué significa calcular un promedio?</h2>
+    <p>
+        Un promedio es una herramienta estadística que sirve para identificar un valor representativo dentro de un conjunto de datos. Su función principal es simplificar y resumir la información, permitiendo interpretar tendencias generales o identificar un punto central. En el ámbito educativo, los promedios son frecuentemente utilizados para medir el desempeño académico de los estudiantes en una materia o curso, proporcionando una evaluación global de sus resultados.
+    </p>
+    <p>
+        Existen distintas maneras de calcular promedios, pero las más comunes son el promedio aritmético y el promedio ponderado.
+    </p>
+
+    <h3>Diferencias entre el promedio aritmético y el ponderado</h3>
+    <p>
+        El promedio aritmético es el método más básico para calcular un promedio. Este se obtiene al sumar todos los valores de un conjunto y dividir la suma por la cantidad de valores. Es, esencialmente, una representación uniforme de los datos, ya que considera que cada elemento tiene el mismo peso o relevancia. Por ejemplo:
+    </p>
+    <p>
+        Si un estudiante obtuvo 65, 70, 43 y 54 en cuatro exámenes, el promedio aritmético sería:
+        <strong>(65 + 70 + 43 + 54) / 4 = 58</strong>.
+    </p>
+    <p>
+        Por otro lado, el promedio ponderado ajusta los cálculos considerando que no todos los valores tienen la misma importancia. Este método asigna un porcentaje específico a cada valor antes de calcular el promedio, lo que lo hace más exacto en situaciones donde algunos datos tienen mayor relevancia. Por ejemplo, cuando tareas, proyectos y exámenes finales tienen distintos porcentajes de impacto en la calificación final.
+    </p>
+
+    <h3>Pasos para calcular un promedio ponderado</h3>
+    <p>La fórmula general para calcular un promedio ponderado es:</p>
+    <p style="font-style: italic; text-align: center;">
+        Promedio Ponderado = (Valor1 × porcentaje1) + (Valor2 × porcentaje2) + ... + (ValorN × porcentajeN) / (porcentaje1 + porcentaje2 + ... + porcentajeN)
+    </p>
+    <p>Donde:</p>
+    <ul>
+        <li><strong>Valor1, Valor2, ... ValorN</strong>: los datos individuales, como calificaciones.</li>
+        <li><strong>porcentaje1, porcentaje2, ... PorcentajeN</strong>: las ponderaciones asociadas a cada valor.</li>
+    </ul>
+    <p>El cálculo consiste en:</p>
+    <ol>
+        <li>Multiplicar cada valor por su porcentaje correspondiente.</li>
+        <li>Sumar los resultados obtenidos en el paso anterior.</li>
+        <li>Dividir esa suma por la totalidad de los porcentaje.</li>
+    </ol>
+
+    <h3>Estructura del Código</h3>
+    <h4>Ingreso de Datos:</h4>
+    <p>
+        Cada nota y su respectivo porcentaje se ingresan a través de campos de entrada creados dinámicamente. Al presionar el botón <strong>Agregar Nota</strong>, se añade un nuevo conjunto de campos para introducir más notas y porcentajes.
+    </p>
+
+    <h4>Almacenamiento en "Matrices":</h4>
+    <p>
+        Aunque no se usan matrices bidimensionales directamente, el código utiliza arreglos de una dimensión (<code>totalNotas</code> y <code>totalPorcentajes</code>) para representar las listas de valores.
+    </p>
+
+    <h4>Validaciones:</h4>
+    <p>
+        El programa asegura que todos los campos estén completos y que los porcentajes sumen exactamente 100%. Esto es crucial para que el promedio ponderado sea significativo.
+    </p>
+
+    <h4>Implementación Matemática:</h4>
+    <p>El cálculo se realiza siguiendo la fórmula general del promedio ponderado:</p>
+    <p style="font-style: italic; text-align: center;">
+        Promedio Ponderado = ∑ (Valori × procentajei) / ∑ porcentajei
+    </p>
+    <p>
+        En este caso, se utiliza la simplificación de que los pesos ya están en porcentaje (100% = 1 en escala normalizada). Por lo tanto, no es necesario dividir nuevamente por <code>∑Pesoᵢ</code>, ya que los porcentajes se convierten en proporciones.
+    </p>
+
+    <h3>Aplicaciones del promedio ponderado</h3>
+    <p>
+        Este tipo de promedio es especialmente útil en situaciones donde los datos no tienen igual importancia. En educación, es común aplicarlo para obtener la nota final de un curso, combinando tareas, proyectos y exámenes según sus ponderaciones específicas. También se utiliza en contextos como evaluaciones de rendimiento laboral o análisis financieros, donde es crucial reflejar la relevancia diferencial de ciertos elementos.
+    </p>
+    <p>
+        En resumen, el promedio ponderado es una herramienta clave para obtener un análisis justo y detallado en escenarios donde no todos los datos tienen el mismo impacto.
+    </p>
+</section>
 
 <script>
     function agregarNota() {
@@ -72,7 +192,7 @@
         var notaItem = document.createElement("div");
         notaItem.classList.add("nota-item");
         
-        // Crear campos para nueva nota y porcentaje
+
         var notaLabel = document.createElement("label");
         notaLabel.textContent = "Nota:";
         var notaInput = document.createElement("input");
@@ -87,7 +207,7 @@
         porcentajeInput.classList.add("porcentaje");
         porcentajeInput.placeholder = "Ingrese el porcentaje";
 
-        // Añadir los elementos creados a la página
+
         notaItem.appendChild(notaLabel);
         notaItem.appendChild(notaInput);
         notaItem.appendChild(porcentajeLabel);
@@ -96,39 +216,34 @@
     }
 
     function calcularPromedio() {
-        // Obtener todas las notas y porcentajes
         var notas = document.querySelectorAll(".nota");
         var porcentajes = document.querySelectorAll(".porcentaje");
 
         var totalNotas = [];
         var totalPorcentajes = [];
 
-        // Convertir las notas y porcentajes en matrices de 1 dimensión
         for (var i = 0; i < notas.length; i++) {
             totalNotas.push(parseFloat(notas[i].value));
-            totalPorcentajes.push(parseFloat(porcentajes[i].value));  // Usar porcentaje directamente
+            totalPorcentajes.push(parseFloat(porcentajes[i].value));
         }
 
-        // Validación de las entradas
+
         if (totalNotas.some(isNaN) || totalPorcentajes.some(isNaN)) {
             alert("Por favor ingrese todas las notas y porcentajes correctamente.");
             return;
         }
 
-        // Verificar que los porcentajes sumen 100%
         var sumaPorcentajes = totalPorcentajes.reduce((acc, porcentaje) => acc + porcentaje, 0);
         if (sumaPorcentajes !== 100) {
             alert("Los porcentajes deben sumar 100%.");
             return;
         }
 
-        // Usar matrices para multiplicar notas por porcentajes
         var sumaPonderada = totalNotas.reduce((acc, nota, index) => acc + (nota * (totalPorcentajes[index] / 100)), 0);
 
-        // Mostrar el resultado
         document.getElementById("result").innerHTML = "El promedio ponderado es: " + sumaPonderada.toFixed(2);
     }
 </script>
 
 </body>
-</html>
+</html>    
